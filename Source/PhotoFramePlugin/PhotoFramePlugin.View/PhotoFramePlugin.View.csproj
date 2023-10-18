@@ -32,24 +32,16 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>PhotoFrame-icons8-96.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="KAPITypes">
-      <HintPath>..\..\..\..\..\..\..\..\Programs\Компас19\SDK\Samples\Common\KAPITypes.dll</HintPath>
-    </Reference>
     <Reference Include="Kompas6API5">
-      <HintPath>..\..\..\..\..\..\..\..\Programs\Компас19\SDK\Samples\Common\Kompas6API5.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="Kompas6Constants">
-      <HintPath>..\..\..\..\..\..\..\..\Programs\Компас19\SDK\Samples\Common\Kompas6Constants.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Programs\KOMPAS-3D v22 Study\SDK\Samples\Common\Kompas6API5.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Kompas6Constants3D">
-      <HintPath>..\..\..\..\..\..\..\..\Programs\Компас19\SDK\Samples\Common\Kompas6Constants3D.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="KompasAPI7">
-      <HintPath>..\..\..\..\..\..\..\..\Programs\Компас19\SDK\Samples\Common\KompasAPI7.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Programs\KOMPAS-3D v22 Study\SDK\Samples\Common\Kompas6Constants3D.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="System" />
@@ -97,6 +89,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PhotoFrame-icons8-96.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
