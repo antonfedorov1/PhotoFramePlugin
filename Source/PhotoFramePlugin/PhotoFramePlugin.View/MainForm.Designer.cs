@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.OptionsPanel = new System.Windows.Forms.Panel();
             this.ParameterLimitations = new System.Windows.Forms.Panel();
@@ -50,6 +51,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.BuildFigure = new System.Windows.Forms.Button();
             this.MainPanel = new System.Windows.Forms.Panel();
+            this.ErrorsToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.OptionsPanel.SuspendLayout();
             this.ParameterLimitations.SuspendLayout();
             this.ParameterValues.SuspendLayout();
@@ -98,9 +100,9 @@
             this.label8.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.label8.Location = new System.Drawing.Point(3, 79);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(95, 19);
+            this.label8.Size = new System.Drawing.Size(94, 19);
             this.label8.TabIndex = 5;
-            this.label8.Text = "100-1210 мм";
+            this.label8.Text = "110-1210 мм";
             // 
             // label6
             // 
@@ -108,9 +110,9 @@
             this.label6.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.label6.Location = new System.Drawing.Point(3, 54);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(95, 19);
+            this.label6.Size = new System.Drawing.Size(94, 19);
             this.label6.TabIndex = 4;
-            this.label6.Text = "100-1210 мм";
+            this.label6.Text = "110-1210 мм";
             // 
             // label4
             // 
@@ -152,7 +154,7 @@
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(83, 20);
             this.textBox5.TabIndex = 6;
-            this.textBox5.Text = "100";
+            this.textBox5.Text = "10";
             // 
             // textBox4
             // 
@@ -161,7 +163,7 @@
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(83, 20);
             this.textBox4.TabIndex = 5;
-            this.textBox4.Text = "99";
+            this.textBox4.Text = "110";
             // 
             // textBox3
             // 
@@ -170,7 +172,7 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(83, 20);
             this.textBox3.TabIndex = 4;
-            this.textBox3.Text = "12";
+            this.textBox3.Text = "110";
             // 
             // textBox2
             // 
@@ -179,7 +181,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(83, 20);
             this.textBox2.TabIndex = 3;
-            this.textBox2.Text = "1300";
+            this.textBox2.Text = "100";
             // 
             // textBox1
             // 
@@ -188,7 +190,8 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(83, 20);
             this.textBox1.TabIndex = 2;
-            this.textBox1.Text = "90";
+            this.textBox1.Text = "100";
+            this.textBox1.MouseEnter += new System.EventHandler(this.TextBox1_MouseEnter);
             // 
             // NameOfParameters
             // 
@@ -327,6 +330,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button BuildFigure;
         private System.Windows.Forms.Panel MainPanel;
+        private System.Windows.Forms.ToolTip ErrorsToolTip;
     }
 }
 

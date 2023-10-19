@@ -13,6 +13,8 @@ namespace PhotoFramePlugin.View
     public partial class MainForm : Form
     {
         private KompasObject kompas;
+        ToolTip t = new ToolTip();
+
 
         public MainForm()
         {
@@ -120,6 +122,11 @@ namespace PhotoFramePlugin.View
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
 
+        }
+
+        private void TextBox1_MouseEnter(object sender, EventArgs e)
+        {
+            t.SetToolTip(textBox1, "Ширина внутри рамки должна быть в диапазоне от 100 до 1200 мм)");
         }
     }
 }
