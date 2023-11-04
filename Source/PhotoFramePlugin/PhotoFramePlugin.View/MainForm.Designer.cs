@@ -38,11 +38,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.ParameterValues = new System.Windows.Forms.Panel();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.FrameThicknessTextBox = new System.Windows.Forms.TextBox();
+            this.FrameHeightTextBox = new System.Windows.Forms.TextBox();
+            this.FrameWidthTextBox = new System.Windows.Forms.TextBox();
+            this.HeightInsideFrameTextBox = new System.Windows.Forms.TextBox();
+            this.WidthInsideFrameTextBox = new System.Windows.Forms.TextBox();
             this.NameOfParameters = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -137,61 +137,70 @@
             // ParameterValues
             // 
             this.ParameterValues.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.ParameterValues.Controls.Add(this.textBox5);
-            this.ParameterValues.Controls.Add(this.textBox4);
-            this.ParameterValues.Controls.Add(this.textBox3);
-            this.ParameterValues.Controls.Add(this.textBox2);
-            this.ParameterValues.Controls.Add(this.textBox1);
+            this.ParameterValues.Controls.Add(this.FrameThicknessTextBox);
+            this.ParameterValues.Controls.Add(this.FrameHeightTextBox);
+            this.ParameterValues.Controls.Add(this.FrameWidthTextBox);
+            this.ParameterValues.Controls.Add(this.HeightInsideFrameTextBox);
+            this.ParameterValues.Controls.Add(this.WidthInsideFrameTextBox);
             this.ParameterValues.Location = new System.Drawing.Point(214, 12);
             this.ParameterValues.Name = "ParameterValues";
             this.ParameterValues.Size = new System.Drawing.Size(89, 132);
             this.ParameterValues.TabIndex = 1;
             // 
-            // textBox5
+            // FrameThicknessTextBox
             // 
-            this.textBox5.BackColor = System.Drawing.Color.White;
-            this.textBox5.Location = new System.Drawing.Point(3, 106);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(83, 20);
-            this.textBox5.TabIndex = 6;
-            this.textBox5.Text = "10";
+            this.FrameThicknessTextBox.BackColor = System.Drawing.Color.White;
+            this.FrameThicknessTextBox.Location = new System.Drawing.Point(3, 106);
+            this.FrameThicknessTextBox.Name = "FrameThicknessTextBox";
+            this.FrameThicknessTextBox.Size = new System.Drawing.Size(83, 20);
+            this.FrameThicknessTextBox.TabIndex = 6;
+            this.FrameThicknessTextBox.Text = "10";
+            this.FrameThicknessTextBox.TextChanged += new System.EventHandler(this.FrameThicknessTextBox_TextChanged);
+            this.FrameThicknessTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FrameThicknessTextBox_KeyPress);
             // 
-            // textBox4
+            // FrameHeightTextBox
             // 
-            this.textBox4.BackColor = System.Drawing.Color.White;
-            this.textBox4.Location = new System.Drawing.Point(3, 80);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(83, 20);
-            this.textBox4.TabIndex = 5;
-            this.textBox4.Text = "110";
+            this.FrameHeightTextBox.BackColor = System.Drawing.Color.White;
+            this.FrameHeightTextBox.Location = new System.Drawing.Point(3, 80);
+            this.FrameHeightTextBox.Name = "FrameHeightTextBox";
+            this.FrameHeightTextBox.Size = new System.Drawing.Size(83, 20);
+            this.FrameHeightTextBox.TabIndex = 5;
+            this.FrameHeightTextBox.Text = "110";
+            this.FrameHeightTextBox.TextChanged += new System.EventHandler(this.FrameHeightTextBox_TextChanged);
+            this.FrameHeightTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FrameHeightTextBox_KeyPress);
             // 
-            // textBox3
+            // FrameWidthTextBox
             // 
-            this.textBox3.BackColor = System.Drawing.Color.White;
-            this.textBox3.Location = new System.Drawing.Point(3, 54);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(83, 20);
-            this.textBox3.TabIndex = 4;
-            this.textBox3.Text = "110";
+            this.FrameWidthTextBox.BackColor = System.Drawing.Color.White;
+            this.FrameWidthTextBox.Location = new System.Drawing.Point(3, 54);
+            this.FrameWidthTextBox.Name = "FrameWidthTextBox";
+            this.FrameWidthTextBox.Size = new System.Drawing.Size(83, 20);
+            this.FrameWidthTextBox.TabIndex = 4;
+            this.FrameWidthTextBox.Text = "110";
+            this.FrameWidthTextBox.TextChanged += new System.EventHandler(this.FrameWidthTextBox_TextChanged);
+            this.FrameWidthTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FrameWidthTextBox_KeyPress);
             // 
-            // textBox2
+            // HeightInsideFrameTextBox
             // 
-            this.textBox2.BackColor = System.Drawing.Color.White;
-            this.textBox2.Location = new System.Drawing.Point(3, 29);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(83, 20);
-            this.textBox2.TabIndex = 3;
-            this.textBox2.Text = "100";
+            this.HeightInsideFrameTextBox.BackColor = System.Drawing.Color.White;
+            this.HeightInsideFrameTextBox.Location = new System.Drawing.Point(3, 29);
+            this.HeightInsideFrameTextBox.Name = "HeightInsideFrameTextBox";
+            this.HeightInsideFrameTextBox.Size = new System.Drawing.Size(83, 20);
+            this.HeightInsideFrameTextBox.TabIndex = 3;
+            this.HeightInsideFrameTextBox.Text = "100";
+            this.HeightInsideFrameTextBox.TextChanged += new System.EventHandler(this.HeightInsideFrameTextBox_TextChanged);
+            this.HeightInsideFrameTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.HeightInsideFrameTextBox_KeyPress);
             // 
-            // textBox1
+            // WidthInsideFrameTextBox
             // 
-            this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.Location = new System.Drawing.Point(3, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(83, 20);
-            this.textBox1.TabIndex = 2;
-            this.textBox1.Text = "100";
-            this.textBox1.MouseEnter += new System.EventHandler(this.TextBox1_MouseEnter);
+            this.WidthInsideFrameTextBox.BackColor = System.Drawing.Color.White;
+            this.WidthInsideFrameTextBox.Location = new System.Drawing.Point(3, 3);
+            this.WidthInsideFrameTextBox.Name = "WidthInsideFrameTextBox";
+            this.WidthInsideFrameTextBox.Size = new System.Drawing.Size(83, 20);
+            this.WidthInsideFrameTextBox.TabIndex = 2;
+            this.WidthInsideFrameTextBox.Text = "100";
+            this.WidthInsideFrameTextBox.TextChanged += new System.EventHandler(this.WidthInsideFrameTextBox_TextChanged);
+            this.WidthInsideFrameTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.WidthInsideFrameTextBox_KeyPress);
             // 
             // NameOfParameters
             // 
@@ -317,11 +326,11 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel ParameterValues;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox FrameThicknessTextBox;
+        private System.Windows.Forms.TextBox FrameHeightTextBox;
+        private System.Windows.Forms.TextBox FrameWidthTextBox;
+        private System.Windows.Forms.TextBox HeightInsideFrameTextBox;
+        private System.Windows.Forms.TextBox WidthInsideFrameTextBox;
         private System.Windows.Forms.Panel NameOfParameters;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label7;

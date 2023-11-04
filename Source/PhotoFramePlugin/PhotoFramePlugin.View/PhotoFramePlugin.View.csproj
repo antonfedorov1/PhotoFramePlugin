@@ -93,5 +93,11 @@
   <ItemGroup>
     <Content Include="PhotoFrame-icons8-96.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PhotoFramePlugin.Model\PhotoFramePlugin.Model.csproj">
+      <Project>{e43b3cf0-132f-49d8-8547-e6085a8b53dd}</Project>
+      <Name>PhotoFramePlugin.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
