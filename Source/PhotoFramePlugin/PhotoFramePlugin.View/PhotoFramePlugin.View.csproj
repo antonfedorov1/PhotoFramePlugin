@@ -36,14 +36,6 @@
     <ApplicationIcon>PhotoFrame-icons8-96.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Kompas6API5">
-      <HintPath>..\..\..\..\..\..\..\..\Programs\KOMPAS-3D v22 Study\SDK\Samples\Common\Kompas6API5.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="Kompas6Constants3D">
-      <HintPath>..\..\..\..\..\..\..\..\Programs\KOMPAS-3D v22 Study\SDK\Samples\Common\Kompas6Constants3D.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -97,6 +89,10 @@
     <ProjectReference Include="..\PhotoFramePlugin.Model\PhotoFramePlugin.Model.csproj">
       <Project>{e43b3cf0-132f-49d8-8547-e6085a8b53dd}</Project>
       <Name>PhotoFramePlugin.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PhotoFramePlugin.Wrapper\PhotoFramePlugin.Wrapper.csproj">
+      <Project>{7ca586b2-fd5c-47a9-9631-59f50fb1610b}</Project>
+      <Name>PhotoFramePlugin.Wrapper</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
