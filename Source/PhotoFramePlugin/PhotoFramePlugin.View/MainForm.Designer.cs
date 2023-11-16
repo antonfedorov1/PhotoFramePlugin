@@ -303,7 +303,7 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Photo Frame Plagin";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.OptionsPanel.ResumeLayout(false);
             this.ParameterLimitations.ResumeLayout(false);
             this.ParameterLimitations.PerformLayout();

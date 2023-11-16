@@ -1,22 +1,33 @@
 ﻿namespace PhotoFramePlugin.Wrapper
 {
+    using System;
     using Kompas6API5;
     using Kompas6Constants3D;
-    using System;
 
     public class Kompas3DWrapper
     {
         private KompasObject KompasObject { get; set; }
+
         private ksDocument3D Document3D { get; set; }
+
         private ksPart Part { get; set; }
+
         private ksEntity Sketch { get; set; }
+
         private ksSketchDefinition DefinitionSketch { get; set; }
+
         private ksDocument2D Document2D { get; set; }
+
         private ksEntity EntityExtr { get; set; }
+
         private ksBossExtrusionDefinition ExtrusionDef { get; set; }
+
         private ksExtrusionParam ExtrProp { get; set; }
+
         private ksRectangleParam FirstRectangleParam { get; set; }
+
         private ksRectangleParam SecondRectangleParam { get; set; }
+
         private ksRectangleParam ThirdRectangleParam { get; set; }
 
 

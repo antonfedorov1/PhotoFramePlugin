@@ -19,63 +19,65 @@
         /// </summary>
         private readonly Color _errorColor = Color.LightPink;
 
-        private Dictionary<string, bool> _dictionaryErrors = new Dictionary<string, bool>()
+        private readonly Dictionary<string, bool> _dictionaryErrors = new Dictionary<string, bool>()
         {
             { nameof(WidthInsideFrameTextBox), true },
             { nameof(HeightInsideFrameTextBox), true },
             { nameof(FrameWidthTextBox), true },
             { nameof(FrameHeightTextBox), true },
-            { nameof(FrameThicknessTextBox), true }
+            { nameof(FrameThicknessTextBox), true },
         };
 
-        private PhotoFrameParameters _parameters = new PhotoFrameParameters();
-        private PhotoFrameBuilder _builder = new PhotoFrameBuilder();
+        private readonly PhotoFrameParameters _parameters = new PhotoFrameParameters();
+        private readonly PhotoFrameBuilder _builder = new PhotoFrameBuilder();
 
-        private Parameter _widthInsideFrame = new Parameter
+        private readonly Parameter _widthInsideFrame = new Parameter
         {
             MaxValue = 1200,
             MinValue = 100,
-            Value = 100
+            Value = 100,
         };
 
-        private Parameter _heightInsideFrame = new Parameter
+        private readonly Parameter _heightInsideFrame = new Parameter
         {
             MaxValue = 1200,
             MinValue = 100,
-            Value = 100
+            Value = 100,
         };
 
-        private Parameter _frameWidth = new Parameter
+        private readonly Parameter _frameWidth = new Parameter
         {
             MaxValue = 1210,
             MinValue = 110,
-            Value = 110
+            Value = 110,
         };
 
-        private Parameter _frameHeight = new Parameter
+        private readonly Parameter _frameHeight = new Parameter
         {
             MaxValue = 1210,
             MinValue = 110,
-            Value = 110
+            Value = 110,
         };
 
-        private Parameter _frameThickness = new Parameter
+        private readonly Parameter _frameThickness = new Parameter
         {
             MaxValue = 30,
             MinValue = 10,
-            Value = 10
+            Value = 10,
         };
 
-        private Parameter _backWallThickness = new Parameter
+        private readonly Parameter _backWallThickness = new Parameter
         {
             MaxValue = 2,
             MinValue = 2,
-            Value = 2
+            Value = 2,
         };
 
-        private ToolTip _toolTip = new ToolTip();
+        private readonly ToolTip _toolTip = new ToolTip();
 
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MainForm"/> class.
+        /// </summary>
         public MainForm()
         {
             InitializeComponent();
@@ -153,14 +155,9 @@
             _builder.BuildPhotoFrame(_parameters);
         }
 
-        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
-        {
-
-        }
-
         private void WidthInsideFrameTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (WidthInsideFrameTextBox.Text != "")
+            if (WidthInsideFrameTextBox.Text != string.Empty)
             {
                 _widthInsideFrame.Value = System.Convert.ToSingle(WidthInsideFrameTextBox.Text);
                 if (!Validator.Validate(_widthInsideFrame))
@@ -183,7 +180,7 @@
 
         private void HeightInsideFrameTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (HeightInsideFrameTextBox.Text != "")
+            if (HeightInsideFrameTextBox.Text != string.Empty)
             {
                 _heightInsideFrame.Value = System.Convert.ToSingle(HeightInsideFrameTextBox.Text);
                 if (!Validator.Validate(_heightInsideFrame))
@@ -206,7 +203,7 @@
 
         private void FrameWidthTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (FrameWidthTextBox.Text != "")
+            if (FrameWidthTextBox.Text != string.Empty)
             {
                 _frameWidth.Value = System.Convert.ToSingle(FrameWidthTextBox.Text);
                 if (!Validator.Validate(_frameWidth))
@@ -229,7 +226,7 @@
 
         private void FrameHeightTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (FrameHeightTextBox.Text != "")
+            if (FrameHeightTextBox.Text != string.Empty)
             {
                 _frameHeight.Value = System.Convert.ToSingle(FrameHeightTextBox.Text);
                 if (!Validator.Validate(_frameHeight))
@@ -252,7 +249,7 @@
 
         private void FrameThicknessTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (FrameThicknessTextBox.Text != "")
+            if (FrameThicknessTextBox.Text != string.Empty)
             {
                 _frameThickness.Value = System.Convert.ToSingle(FrameThicknessTextBox.Text);
                 if (!Validator.Validate(_frameThickness))
@@ -275,7 +272,7 @@
         private void WidthInsideFrameTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             char number = e.KeyChar;
-            if (!Char.IsDigit(number) && number != 8 && number != 44) // цифры, клавиша BackSpace и запятая
+            if (!char.IsDigit(number) && number != 8 && number != 44)
             {
                 e.Handled = true;
             }
@@ -284,7 +281,7 @@
         private void HeightInsideFrameTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             char number = e.KeyChar;
-            if (!Char.IsDigit(number) && number != 8 && number != 44) // цифры, клавиша BackSpace и запятая
+            if (!char.IsDigit(number) && number != 8 && number != 44)
             {
                 e.Handled = true;
             }
@@ -293,7 +290,7 @@
         private void FrameWidthTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             char number = e.KeyChar;
-            if (!Char.IsDigit(number) && number != 8 && number != 44) // цифры, клавиша BackSpace и запятая
+            if (!char.IsDigit(number) && number != 8 && number != 44)
             {
                 e.Handled = true;
             }
@@ -302,7 +299,7 @@
         private void FrameHeightTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             char number = e.KeyChar;
-            if (!Char.IsDigit(number) && number != 8 && number != 44) // цифры, клавиша BackSpace и запятая
+            if (!char.IsDigit(number) && number != 8 && number != 44)
             {
                 e.Handled = true;
             }
@@ -311,10 +308,17 @@
         private void FrameThicknessTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             char number = e.KeyChar;
-            if (!Char.IsDigit(number) && number != 8 && number != 44) // цифры, клавиша BackSpace и запятая
+            if (!char.IsDigit(number) && number != 8 && number != 44)
             {
                 e.Handled = true;
             }
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            var isFormClosing = MessageBox.Show("Вы действительно хотите выйти??", "Выход из программы",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            e.Cancel = !(isFormClosing == DialogResult.Yes);
         }
     }
 }

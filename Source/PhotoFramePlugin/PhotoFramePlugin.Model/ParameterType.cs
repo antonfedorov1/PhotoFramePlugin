@@ -7,6 +7,6 @@
         FrameWidth,
         FrameHeight,
         FrameThickness,
-        BackWallThickness
+        BackWallThickness,
     }
 }
