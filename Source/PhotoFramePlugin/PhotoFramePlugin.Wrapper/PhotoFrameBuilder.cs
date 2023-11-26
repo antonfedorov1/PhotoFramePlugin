@@ -2,10 +2,20 @@
 {
     using PhotoFramePlugin.Model;
 
+    /// <summary>
+    /// Builder.
+    /// </summary>
     public class PhotoFrameBuilder
     {
-        private Kompas3DWrapper _kompas3DWrapper = new Kompas3DWrapper();
+        /// <summary>
+        /// Экземпляр класса Kompas3DWrapper.
+        /// </summary>
+        private readonly Kompas3DWrapper _kompas3DWrapper = new Kompas3DWrapper();
 
+        /// <summary>
+        /// Построить фоторамку.
+        /// </summary>
+        /// <param name="photoFrameParameters">Параметры для построения фоторамки.</param>
         public void BuildPhotoFrame(PhotoFrameParameters photoFrameParameters)
         {
             _kompas3DWrapper.OpenKompas();

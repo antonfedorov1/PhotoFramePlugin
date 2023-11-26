@@ -7,8 +7,21 @@
     using PhotoFramePlugin.Model;
     using PhotoFramePlugin.Wrapper;
 
-    public partial class MainForm : Form
+    /// <summary>
+    /// MainForm.
+    /// </summary>
+    internal partial class MainForm : Form
     {
+        /// <summary>
+        /// Минимальное пороговое значение.
+        /// </summary>
+        private const int MIN_THRESHOLD_VALUE = 10;
+
+        /// <summary>
+        /// Максимальное пороговое значение.
+        /// </summary>
+        private const int MAX_THRESHOLD_VALUE = 50;
+
         /// <summary>
         /// Цвет, если всё правильно.
         /// </summary>
@@ -19,6 +32,19 @@
         /// </summary>
         private readonly Color _errorColor = Color.LightPink;
 
+        /// <summary>
+        /// Экземпляр класса PhotoFrameBuilder.
+        /// </summary>
+        private readonly PhotoFrameBuilder _builder = new PhotoFrameBuilder();
+
+        /// <summary>
+        /// Экземпляр класса PhotoFrameParameters.
+        /// </summary>
+        private readonly PhotoFrameParameters _parameters = new PhotoFrameParameters();
+
+        /// <summary>
+        /// Ошибки валидации.
+        /// </summary>
         private readonly Dictionary<string, bool> _dictionaryErrors = new Dictionary<string, bool>()
         {
             { nameof(WidthInsideFrameTextBox), true },
@@ -28,9 +54,9 @@
             { nameof(FrameThicknessTextBox), true },
         };
 
-        private readonly PhotoFrameParameters _parameters = new PhotoFrameParameters();
-        private readonly PhotoFrameBuilder _builder = new PhotoFrameBuilder();
-
+        /// <summary>
+        /// Ширина внутри рамки.
+        /// </summary>
         private readonly Parameter _widthInsideFrame = new Parameter
         {
             MaxValue = 1200,
@@ -38,6 +64,9 @@
             Value = 100,
         };
 
+        /// <summary>
+        /// Высота внутри рамки.
+        /// </summary>
         private readonly Parameter _heightInsideFrame = new Parameter
         {
             MaxValue = 1200,
@@ -45,6 +74,9 @@
             Value = 100,
         };
 
+        /// <summary>
+        /// Ширина рамки.
+        /// </summary>
         private readonly Parameter _frameWidth = new Parameter
         {
             MaxValue = 1210,
@@ -52,6 +84,9 @@
             Value = 110,
         };
 
+        /// <summary>
+        /// Высота рамки.
+        /// </summary>
         private readonly Parameter _frameHeight = new Parameter
         {
             MaxValue = 1210,
@@ -59,6 +94,9 @@
             Value = 110,
         };
 
+        /// <summary>
+        /// Толщина рамки.
+        /// </summary>
         private readonly Parameter _frameThickness = new Parameter
         {
             MaxValue = 30,
@@ -66,6 +104,9 @@
             Value = 10,
         };
 
+        /// <summary>
+        /// Толщина задней стенки.
+        /// </summary>
         private readonly Parameter _backWallThickness = new Parameter
         {
             MaxValue = 2,
@@ -73,6 +114,9 @@
             Value = 2,
         };
 
+        /// <summary>
+        /// Подсказки для полей.
+        /// </summary>
         private readonly ToolTip _toolTip = new ToolTip();
 
         /// <summary>
@@ -83,6 +127,9 @@
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Проверка формы на наличие ошибок.
+        /// </summary>
         private void CheckFormOnErrors()
         {
             foreach (var error in _dictionaryErrors)
@@ -93,12 +140,16 @@
                     return;
                 }
             }
+
             BuildFigure.Enabled = true;
         }
 
+        /// <summary>
+        /// Проверка зависимых параметров ширины.
+        /// </summary>
         private void CheckingDependentWidthParameters()
         {
-            if (!Validator.ValidateTwoParameter(_widthInsideFrame, _frameWidth))
+            if (!Validator.DependentParameterValidation(_widthInsideFrame, _frameWidth, MIN_THRESHOLD_VALUE, MAX_THRESHOLD_VALUE))
             {
                 WidthInsideFrameTextBox.BackColor = _errorColor;
                 FrameWidthTextBox.BackColor = _errorColor;
@@ -118,9 +169,12 @@
             }
         }
 
+        /// <summary>
+        /// Проверка зависимых параметров высоты.
+        /// </summary>
         private void CheckingDependentHeightParameters()
         {
-            if (!Validator.ValidateTwoParameter(_heightInsideFrame, _frameHeight))
+            if (!Validator.DependentParameterValidation(_heightInsideFrame, _frameHeight, MIN_THRESHOLD_VALUE, MAX_THRESHOLD_VALUE))
             {
                 HeightInsideFrameTextBox.BackColor = _errorColor;
                 FrameHeightTextBox.BackColor = _errorColor;
@@ -144,12 +198,12 @@
         {
             _parameters.Parameters = new Dictionary<ParameterType, Parameter>
             {
-                {ParameterType.WidthInsideFrame, _widthInsideFrame},
-                {ParameterType.HeightInsideFrame, _heightInsideFrame},
-                {ParameterType.FrameWidth, _frameWidth},
-                {ParameterType.FrameHeight, _frameHeight},
-                {ParameterType.FrameThickness, _frameThickness},
-                {ParameterType.BackWallThickness, _backWallThickness}
+                { ParameterType.WidthInsideFrame, _widthInsideFrame },
+                { ParameterType.HeightInsideFrame, _heightInsideFrame },
+                { ParameterType.FrameWidth, _frameWidth },
+                { ParameterType.FrameHeight, _frameHeight },
+                { ParameterType.FrameThickness, _frameThickness },
+                { ParameterType.BackWallThickness, _backWallThickness }
             };
 
             _builder.BuildPhotoFrame(_parameters);
@@ -160,7 +214,7 @@
             if (WidthInsideFrameTextBox.Text != string.Empty)
             {
                 _widthInsideFrame.Value = System.Convert.ToSingle(WidthInsideFrameTextBox.Text);
-                if (!Validator.Validate(_widthInsideFrame))
+                if (!Validator.ValidateParameter(_widthInsideFrame))
                 {
                     WidthInsideFrameTextBox.BackColor = _errorColor;
                     _toolTip.SetToolTip(WidthInsideFrameTextBox, "Ширина внутри рамки должна быть в диапазоне от 100 до 1200 мм");
@@ -183,7 +237,7 @@
             if (HeightInsideFrameTextBox.Text != string.Empty)
             {
                 _heightInsideFrame.Value = System.Convert.ToSingle(HeightInsideFrameTextBox.Text);
-                if (!Validator.Validate(_heightInsideFrame))
+                if (!Validator.ValidateParameter(_heightInsideFrame))
                 {
                     HeightInsideFrameTextBox.BackColor = _errorColor;
                     _toolTip.SetToolTip(HeightInsideFrameTextBox, "Высота внутри рамки должна быть в диапазоне от 100 до 1200 мм");
@@ -206,7 +260,7 @@
             if (FrameWidthTextBox.Text != string.Empty)
             {
                 _frameWidth.Value = System.Convert.ToSingle(FrameWidthTextBox.Text);
-                if (!Validator.Validate(_frameWidth))
+                if (!Validator.ValidateParameter(_frameWidth))
                 {
                     FrameWidthTextBox.BackColor = _errorColor;
                     _toolTip.SetToolTip(FrameWidthTextBox, "Ширина внешней рамки должна быть в диапазоне от 110 до 1210 мм");
@@ -229,7 +283,7 @@
             if (FrameHeightTextBox.Text != string.Empty)
             {
                 _frameHeight.Value = System.Convert.ToSingle(FrameHeightTextBox.Text);
-                if (!Validator.Validate(_frameHeight))
+                if (!Validator.ValidateParameter(_frameHeight))
                 {
                     FrameHeightTextBox.BackColor = _errorColor;
                     _toolTip.SetToolTip(FrameHeightTextBox, "Высота внешней рамки должна быть в диапазоне от 110 до 1210 мм");
@@ -252,7 +306,7 @@
             if (FrameThicknessTextBox.Text != string.Empty)
             {
                 _frameThickness.Value = System.Convert.ToSingle(FrameThicknessTextBox.Text);
-                if (!Validator.Validate(_frameThickness))
+                if (!Validator.ValidateParameter(_frameThickness))
                 {
                     FrameThicknessTextBox.BackColor = _errorColor;
                     _toolTip.SetToolTip(FrameThicknessTextBox, "Толщина рамки должна быть в диапазоне от 10 до 30 мм");
@@ -316,7 +370,8 @@
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            var isFormClosing = MessageBox.Show("Вы действительно хотите выйти??", "Выход из программы",
+            DialogResult isFormClosing;
+            isFormClosing = MessageBox.Show("Вы действительно хотите выйти??", "Выход из программы",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             e.Cancel = !(isFormClosing == DialogResult.Yes);
         }
