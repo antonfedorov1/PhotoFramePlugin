@@ -149,14 +149,22 @@
         /// </summary>
         private void CheckingDependentWidthParameters()
         {
-            if (!Validator.DependentParameterValidation(_widthInsideFrame, _frameWidth, MIN_THRESHOLD_VALUE, MAX_THRESHOLD_VALUE))
+            if (!Validator.DependentParameterValidation(
+                _widthInsideFrame,
+                _frameWidth,
+                MIN_THRESHOLD_VALUE,
+                MAX_THRESHOLD_VALUE))
             {
                 WidthInsideFrameTextBox.BackColor = _errorColor;
                 FrameWidthTextBox.BackColor = _errorColor;
                 _dictionaryErrors[nameof(WidthInsideFrameTextBox)] = false;
                 _dictionaryErrors[nameof(FrameWidthTextBox)] = false;
-                _toolTip.SetToolTip(WidthInsideFrameTextBox, "Ширина внутренней рамки не должна превышать ширину внешней рамки");
-                _toolTip.SetToolTip(FrameWidthTextBox, "Ширина внутренней рамки не должна превышать ширину внешней рамки");
+                _toolTip.SetToolTip(
+                    WidthInsideFrameTextBox,
+                    "Ширина внутренней рамки не должна превышать ширину внешней рамки");
+                _toolTip.SetToolTip(
+                    FrameWidthTextBox,
+                    "Ширина внутренней рамки не должна превышать ширину внешней рамки");
             }
             else
             {
@@ -174,14 +182,22 @@
         /// </summary>
         private void CheckingDependentHeightParameters()
         {
-            if (!Validator.DependentParameterValidation(_heightInsideFrame, _frameHeight, MIN_THRESHOLD_VALUE, MAX_THRESHOLD_VALUE))
+            if (!Validator.DependentParameterValidation(
+                _heightInsideFrame,
+                _frameHeight,
+                MIN_THRESHOLD_VALUE,
+                MAX_THRESHOLD_VALUE))
             {
                 HeightInsideFrameTextBox.BackColor = _errorColor;
                 FrameHeightTextBox.BackColor = _errorColor;
                 _dictionaryErrors[nameof(HeightInsideFrameTextBox)] = false;
                 _dictionaryErrors[nameof(FrameHeightTextBox)] = false;
-                _toolTip.SetToolTip(HeightInsideFrameTextBox, "Высота внутренней рамки не должна превышать ширину внешней рамки");
-                _toolTip.SetToolTip(FrameHeightTextBox, "Высота внутренней рамки не должна превышать ширину внешней рамки");
+                _toolTip.SetToolTip(
+                    HeightInsideFrameTextBox,
+                    "Высота внутренней рамки не должна превышать ширину внешней рамки");
+                _toolTip.SetToolTip(
+                    FrameHeightTextBox,
+                    "Высота внутренней рамки не должна превышать ширину внешней рамки");
             }
             else
             {
@@ -217,7 +233,9 @@
                 if (!Validator.ValidateParameter(_widthInsideFrame))
                 {
                     WidthInsideFrameTextBox.BackColor = _errorColor;
-                    _toolTip.SetToolTip(WidthInsideFrameTextBox, "Ширина внутри рамки должна быть в диапазоне от 100 до 1200 мм");
+                    _toolTip.SetToolTip(
+                        WidthInsideFrameTextBox,
+                        "Ширина внутри рамки должна быть в диапазоне от 100 до 1200 мм");
                     _dictionaryErrors[nameof(WidthInsideFrameTextBox)] = false;
                     CheckFormOnErrors();
                 }
@@ -240,7 +258,9 @@
                 if (!Validator.ValidateParameter(_heightInsideFrame))
                 {
                     HeightInsideFrameTextBox.BackColor = _errorColor;
-                    _toolTip.SetToolTip(HeightInsideFrameTextBox, "Высота внутри рамки должна быть в диапазоне от 100 до 1200 мм");
+                    _toolTip.SetToolTip(
+                        HeightInsideFrameTextBox,
+                        "Высота внутри рамки должна быть в диапазоне от 100 до 1200 мм");
                     _dictionaryErrors[nameof(HeightInsideFrameTextBox)] = false;
                     CheckFormOnErrors();
                 }
@@ -263,7 +283,9 @@
                 if (!Validator.ValidateParameter(_frameWidth))
                 {
                     FrameWidthTextBox.BackColor = _errorColor;
-                    _toolTip.SetToolTip(FrameWidthTextBox, "Ширина внешней рамки должна быть в диапазоне от 110 до 1210 мм");
+                    _toolTip.SetToolTip(
+                        FrameWidthTextBox,
+                        "Ширина внешней рамки должна быть в диапазоне от 110 до 1210 мм");
                     _dictionaryErrors[nameof(FrameWidthTextBox)] = false;
                     CheckFormOnErrors();
                 }
@@ -286,7 +308,9 @@
                 if (!Validator.ValidateParameter(_frameHeight))
                 {
                     FrameHeightTextBox.BackColor = _errorColor;
-                    _toolTip.SetToolTip(FrameHeightTextBox, "Высота внешней рамки должна быть в диапазоне от 110 до 1210 мм");
+                    _toolTip.SetToolTip(
+                        FrameHeightTextBox,
+                        "Высота внешней рамки должна быть в диапазоне от 110 до 1210 мм");
                     _dictionaryErrors[nameof(FrameHeightTextBox)] = false;
                     CheckFormOnErrors();
                 }
@@ -309,7 +333,9 @@
                 if (!Validator.ValidateParameter(_frameThickness))
                 {
                     FrameThicknessTextBox.BackColor = _errorColor;
-                    _toolTip.SetToolTip(FrameThicknessTextBox, "Толщина рамки должна быть в диапазоне от 10 до 30 мм");
+                    _toolTip.SetToolTip(
+                        FrameThicknessTextBox,
+                        "Толщина рамки должна быть в диапазоне от 10 до 30 мм");
                     _dictionaryErrors[nameof(FrameThicknessTextBox)] = false;
                     CheckFormOnErrors();
                 }
@@ -371,7 +397,9 @@
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             DialogResult isFormClosing;
-            isFormClosing = MessageBox.Show("Вы действительно хотите выйти??", "Выход из программы",
+            isFormClosing = MessageBox.Show(
+                "Вы действительно хотите выйти??",
+                "Выход из программы",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             e.Cancel = !(isFormClosing == DialogResult.Yes);
         }

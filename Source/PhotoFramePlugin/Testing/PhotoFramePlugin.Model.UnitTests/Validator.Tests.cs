@@ -42,12 +42,22 @@
             // Arrange
             var minValue = 10;
             var maxValue = 50;
-            var firstCorrectParameter = new Parameter { MaxValue = 1200, MinValue = 100, Value = 100 };
-            var secondCorrectParameter = new Parameter { MaxValue = 1210, MinValue = 110, Value = 110 };
+            var firstCorrectParameter = new Parameter
+            {
+                MaxValue = 1200, MinValue = 100, Value = 100
+            };
+            var secondCorrectParameter = new Parameter
+            {
+                MaxValue = 1210, MinValue = 110, Value = 110
+            };
             var expected = true;
 
             // Act
-            var actual = Validator.DependentParameterValidation(firstCorrectParameter, secondCorrectParameter, minValue, maxValue);
+            var actual = Validator.DependentParameterValidation(
+                firstCorrectParameter,
+                secondCorrectParameter,
+                minValue,
+                maxValue);
 
             // Assert
             Assert.AreEqual(expected, actual);
@@ -59,12 +69,22 @@
             // Arrange
             var minValue = 10;
             var maxValue = 50;
-            var firstCorrectParameter = new Parameter { MaxValue = 1200, MinValue = 100, Value = 100 };
-            var secondCorrectParameter = new Parameter { MaxValue = 1210, MinValue = 110, Value = 90 };
+            var firstCorrectParameter = new Parameter
+            {
+                MaxValue = 1200, MinValue = 100, Value = 100
+            };
+            var secondCorrectParameter = new Parameter
+            {
+                MaxValue = 1210, MinValue = 110, Value = 90
+            };
             var expected = false;
 
             // Act
-            var actual = Validator.DependentParameterValidation(firstCorrectParameter, secondCorrectParameter, minValue, maxValue);
+            var actual = Validator.DependentParameterValidation(
+                firstCorrectParameter,
+                secondCorrectParameter,
+                minValue,
+                maxValue);
 
             // Assert
             Assert.AreEqual(expected, actual);

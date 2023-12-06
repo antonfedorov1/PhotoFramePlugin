@@ -12,7 +12,8 @@
         /// <returns>True - если проверка прошла, иначе - false.</returns>
         public static bool ValidateParameter(Parameter parameter)
         {
-            return !(parameter.Value > parameter.MaxValue) && !(parameter.Value < parameter.MinValue);
+            return !(parameter.Value > parameter.MaxValue) &&
+                   !(parameter.Value < parameter.MinValue);
         }
 
         /// <summary>
@@ -23,9 +24,14 @@
         /// <param name="minValue">Минимальный порог.</param>
         /// <param name="maxValue">Максимальный порог.</param>
         /// <returns>True - если проверка прошла, иначе - false.</returns>
-        public static bool DependentParameterValidation(Parameter firstParameter, Parameter secondParameter, int minValue, int maxValue)
+        public static bool DependentParameterValidation(
+            Parameter firstParameter,
+            Parameter secondParameter,
+            int minValue,
+            int maxValue)
         {
-            return secondParameter.Value - firstParameter.Value >= minValue && secondParameter.Value - firstParameter.Value <= maxValue;
+            return secondParameter.Value - firstParameter.Value >=
+                minValue && secondParameter.Value - firstParameter.Value <= maxValue;
         }
     }
 }
