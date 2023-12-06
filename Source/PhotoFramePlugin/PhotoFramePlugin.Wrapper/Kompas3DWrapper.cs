@@ -1,6 +1,8 @@
 ﻿namespace PhotoFramePlugin.Wrapper
 {
     using System;
+    using System.Diagnostics;
+    using System.Runtime.InteropServices;
     using Kompas6API5;
     using Kompas6Constants3D;
 
@@ -74,10 +76,20 @@
         /// </summary>
         public void OpenKompas()
         {
-            Type type = Type.GetTypeFromProgID("KOMPAS.Application.5");
-            KompasObject = (KompasObject)Activator.CreateInstance(type);
-            KompasObject.Visible = true;
-            KompasObject.ActivateControllerAPI();
+            Process[] pname = Process.GetProcessesByName("kStudy");
+            if (pname.Length != 0)
+            {
+                KompasObject = (KompasObject)Marshal.GetActiveObject("KOMPAS.Application.5");
+                KompasObject.ActivateControllerAPI();
+            }
+            else
+            {
+                KompasObject = null;
+                Type type = Type.GetTypeFromProgID("KOMPAS.Application.5");
+                KompasObject = (KompasObject)Activator.CreateInstance(type);
+                KompasObject.Visible = true;
+                KompasObject.ActivateControllerAPI();
+            }
         }
 
         /// <summary>
