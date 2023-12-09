@@ -32,18 +32,24 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.OptionsPanel = new System.Windows.Forms.Panel();
             this.ParameterLimitations = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.ParameterValues = new System.Windows.Forms.Panel();
+            this.FrameRoundingTextBox = new System.Windows.Forms.TextBox();
             this.FrameThicknessTextBox = new System.Windows.Forms.TextBox();
             this.FrameHeightTextBox = new System.Windows.Forms.TextBox();
             this.FrameWidthTextBox = new System.Windows.Forms.TextBox();
             this.HeightInsideFrameTextBox = new System.Windows.Forms.TextBox();
             this.WidthInsideFrameTextBox = new System.Windows.Forms.TextBox();
             this.NameOfParameters = new System.Windows.Forms.Panel();
+            this.EllipseFrameCheckBox = new System.Windows.Forms.CheckBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.FrameRoundingCheckBox = new System.Windows.Forms.CheckBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -67,13 +73,14 @@
             this.OptionsPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.OptionsPanel.Location = new System.Drawing.Point(0, 0);
             this.OptionsPanel.Name = "OptionsPanel";
-            this.OptionsPanel.Size = new System.Drawing.Size(458, 144);
+            this.OptionsPanel.Size = new System.Drawing.Size(458, 193);
             this.OptionsPanel.TabIndex = 3;
             // 
             // ParameterLimitations
             // 
             this.ParameterLimitations.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ParameterLimitations.Controls.Add(this.label12);
             this.ParameterLimitations.Controls.Add(this.label10);
             this.ParameterLimitations.Controls.Add(this.label8);
             this.ParameterLimitations.Controls.Add(this.label6);
@@ -81,8 +88,18 @@
             this.ParameterLimitations.Controls.Add(this.label2);
             this.ParameterLimitations.Location = new System.Drawing.Point(309, 12);
             this.ParameterLimitations.Name = "ParameterLimitations";
-            this.ParameterLimitations.Size = new System.Drawing.Size(137, 132);
+            this.ParameterLimitations.Size = new System.Drawing.Size(137, 181);
             this.ParameterLimitations.TabIndex = 2;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.label12.Location = new System.Drawing.Point(3, 131);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(55, 19);
+            this.label12.TabIndex = 7;
+            this.label12.Text = "1-8 мм";
             // 
             // label10
             // 
@@ -137,6 +154,7 @@
             // ParameterValues
             // 
             this.ParameterValues.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.ParameterValues.Controls.Add(this.FrameRoundingTextBox);
             this.ParameterValues.Controls.Add(this.FrameThicknessTextBox);
             this.ParameterValues.Controls.Add(this.FrameHeightTextBox);
             this.ParameterValues.Controls.Add(this.FrameWidthTextBox);
@@ -144,8 +162,19 @@
             this.ParameterValues.Controls.Add(this.WidthInsideFrameTextBox);
             this.ParameterValues.Location = new System.Drawing.Point(214, 12);
             this.ParameterValues.Name = "ParameterValues";
-            this.ParameterValues.Size = new System.Drawing.Size(89, 132);
+            this.ParameterValues.Size = new System.Drawing.Size(89, 181);
             this.ParameterValues.TabIndex = 1;
+            // 
+            // FrameRoundingTextBox
+            // 
+            this.FrameRoundingTextBox.BackColor = System.Drawing.Color.White;
+            this.FrameRoundingTextBox.Enabled = false;
+            this.FrameRoundingTextBox.Location = new System.Drawing.Point(3, 132);
+            this.FrameRoundingTextBox.Name = "FrameRoundingTextBox";
+            this.FrameRoundingTextBox.Size = new System.Drawing.Size(83, 20);
+            this.FrameRoundingTextBox.TabIndex = 7;
+            this.FrameRoundingTextBox.Text = "1";
+            this.FrameRoundingTextBox.TextChanged += new System.EventHandler(this.FrameRoundingTextBox_TextChanged);
             // 
             // FrameThicknessTextBox
             // 
@@ -206,6 +235,10 @@
             // 
             this.NameOfParameters.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.NameOfParameters.Controls.Add(this.EllipseFrameCheckBox);
+            this.NameOfParameters.Controls.Add(this.label13);
+            this.NameOfParameters.Controls.Add(this.FrameRoundingCheckBox);
+            this.NameOfParameters.Controls.Add(this.label11);
             this.NameOfParameters.Controls.Add(this.label9);
             this.NameOfParameters.Controls.Add(this.label7);
             this.NameOfParameters.Controls.Add(this.label5);
@@ -213,8 +246,47 @@
             this.NameOfParameters.Controls.Add(this.label1);
             this.NameOfParameters.Location = new System.Drawing.Point(12, 12);
             this.NameOfParameters.Name = "NameOfParameters";
-            this.NameOfParameters.Size = new System.Drawing.Size(196, 132);
+            this.NameOfParameters.Size = new System.Drawing.Size(196, 181);
             this.NameOfParameters.TabIndex = 0;
+            // 
+            // EllipseFrameCheckBox
+            // 
+            this.EllipseFrameCheckBox.AutoSize = true;
+            this.EllipseFrameCheckBox.Location = new System.Drawing.Point(175, 159);
+            this.EllipseFrameCheckBox.Name = "EllipseFrameCheckBox";
+            this.EllipseFrameCheckBox.Size = new System.Drawing.Size(15, 14);
+            this.EllipseFrameCheckBox.TabIndex = 9;
+            this.EllipseFrameCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label13.Location = new System.Drawing.Point(3, 155);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(156, 19);
+            this.label13.TabIndex = 8;
+            this.label13.Text = "Рамка в виде эллипса";
+            // 
+            // FrameRoundingCheckBox
+            // 
+            this.FrameRoundingCheckBox.AutoSize = true;
+            this.FrameRoundingCheckBox.Location = new System.Drawing.Point(175, 135);
+            this.FrameRoundingCheckBox.Name = "FrameRoundingCheckBox";
+            this.FrameRoundingCheckBox.Size = new System.Drawing.Size(15, 14);
+            this.FrameRoundingCheckBox.TabIndex = 7;
+            this.FrameRoundingCheckBox.UseVisualStyleBackColor = true;
+            this.FrameRoundingCheckBox.CheckedChanged += new System.EventHandler(this.FrameRoundingCheckBox_CheckedChanged);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label11.Location = new System.Drawing.Point(3, 131);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(132, 19);
+            this.label11.TabIndex = 6;
+            this.label11.Text = "Скругление рамки";
             // 
             // label9
             // 
@@ -270,7 +342,7 @@
             // 
             this.BuildFigure.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.BuildFigure.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BuildFigure.Location = new System.Drawing.Point(187, 152);
+            this.BuildFigure.Location = new System.Drawing.Point(187, 199);
             this.BuildFigure.Name = "BuildFigure";
             this.BuildFigure.Size = new System.Drawing.Size(113, 30);
             this.BuildFigure.TabIndex = 0;
@@ -285,21 +357,21 @@
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainPanel.Location = new System.Drawing.Point(0, 0);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(458, 194);
+            this.MainPanel.Size = new System.Drawing.Size(458, 241);
             this.MainPanel.TabIndex = 1;
             // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(458, 194);
+            this.ClientSize = new System.Drawing.Size(458, 241);
             this.Controls.Add(this.MainPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(474, 233);
+            this.MaximumSize = new System.Drawing.Size(474, 280);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(474, 233);
+            this.MinimumSize = new System.Drawing.Size(474, 280);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Photo Frame Plagin";
@@ -340,6 +412,12 @@
         private System.Windows.Forms.Button BuildFigure;
         private System.Windows.Forms.Panel MainPanel;
         private System.Windows.Forms.ToolTip ErrorsToolTip;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox FrameRoundingTextBox;
+        private System.Windows.Forms.CheckBox EllipseFrameCheckBox;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.CheckBox FrameRoundingCheckBox;
+        private System.Windows.Forms.Label label11;
     }
 }
 

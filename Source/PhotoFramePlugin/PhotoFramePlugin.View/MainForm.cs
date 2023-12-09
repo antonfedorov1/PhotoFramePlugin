@@ -52,6 +52,7 @@
             { nameof(FrameWidthTextBox), true },
             { nameof(FrameHeightTextBox), true },
             { nameof(FrameThicknessTextBox), true },
+            { nameof(FrameRoundingTextBox), true },
         };
 
         /// <summary>
@@ -112,6 +113,16 @@
             MaxValue = 2,
             MinValue = 2,
             Value = 2,
+        };
+
+        /// <summary>
+        /// Скругление рамки.
+        /// </summary>
+        private readonly Parameter _frameRounding = new Parameter
+        {
+            MaxValue = 8,
+            MinValue = 1,
+            Value = 1,
         };
 
         /// <summary>
@@ -219,10 +230,11 @@
                 { ParameterType.FrameWidth, _frameWidth },
                 { ParameterType.FrameHeight, _frameHeight },
                 { ParameterType.FrameThickness, _frameThickness },
-                { ParameterType.BackWallThickness, _backWallThickness }
+                { ParameterType.BackWallThickness, _backWallThickness },
+                { ParameterType.FrameRounding, _frameRounding }
             };
 
-            _builder.BuildPhotoFrame(_parameters);
+            _builder.BuildPhotoFrame(_parameters, FrameRoundingCheckBox.Checked, EllipseFrameCheckBox.Checked);
         }
 
         private void WidthInsideFrameTextBox_TextChanged(object sender, EventArgs e)
@@ -349,6 +361,30 @@
             }
         }
 
+        private void FrameRoundingTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (FrameRoundingTextBox.Text != string.Empty)
+            {
+                _frameRounding.Value = System.Convert.ToSingle(FrameRoundingTextBox.Text);
+                if (!Validator.ValidateParameter(_frameRounding))
+                {
+                    FrameRoundingTextBox.BackColor = _errorColor;
+                    _toolTip.SetToolTip(
+                        FrameRoundingTextBox,
+                        "Скругление рамки должна быть в диапазоне от 1 до 8 мм");
+                    _dictionaryErrors[nameof(FrameRoundingTextBox)] = false;
+                    CheckFormOnErrors();
+                }
+                else
+                {
+                    FrameRoundingTextBox.BackColor = _correctСolor;
+                    _toolTip.SetToolTip(FrameRoundingTextBox, "");
+                    _dictionaryErrors[nameof(FrameRoundingTextBox)] = true;
+                    CheckFormOnErrors();
+                }
+            }
+        }
+
         private void WidthInsideFrameTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             char number = e.KeyChar;
@@ -402,6 +438,30 @@
                 "Выход из программы",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             e.Cancel = !(isFormClosing == DialogResult.Yes);
+        }
+
+        private void FrameRoundingCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (FrameRoundingCheckBox.CheckState == CheckState.Checked)
+            {
+                FrameRoundingTextBox.Enabled = true;
+                _frameRounding.Value = System.Convert.ToSingle(FrameRoundingTextBox.Text);
+                if (!Validator.ValidateParameter(_frameRounding))
+                {
+                    FrameRoundingTextBox.BackColor = _errorColor;
+                    _toolTip.SetToolTip(
+                        FrameRoundingTextBox,
+                        "Скругление рамки должна быть в диапазоне от 1 до 8 мм");
+                    _dictionaryErrors[nameof(FrameRoundingTextBox)] = false;
+                    CheckFormOnErrors();
+                }
+            }
+            else
+            {
+                FrameRoundingTextBox.Enabled = false;
+                _dictionaryErrors[nameof(FrameRoundingTextBox)] = true;
+                CheckFormOnErrors();
+            }
         }
     }
 }

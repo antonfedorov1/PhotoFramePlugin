@@ -34,5 +34,10 @@
         /// Толщина задней стенки.
         /// </summary>
         BackWallThickness,
+
+        /// <summary>
+        /// Скругление рамки.
+        /// </summary>
+        FrameRounding,
     }
 }

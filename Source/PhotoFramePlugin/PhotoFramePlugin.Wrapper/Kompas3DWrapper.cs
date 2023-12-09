@@ -72,6 +72,21 @@
         private ksRectangleParam ThirdRectangleParam { get; set; }
 
         /// <summary>
+        /// Параметр первого эллипса.
+        /// </summary>
+        private ksEllipseParam FirstEllipseParam { get; set; }
+
+        /// <summary>
+        /// Параметр второго эллипса.
+        /// </summary>
+        private ksEllipseParam SecondEllipseParam { get; set; }
+
+        /// <summary>
+        /// Параметр третьего эллипса.
+        /// </summary>
+        private ksEllipseParam ThirdEllipseParam { get; set; }
+
+        /// <summary>
         /// Открытие компаса.
         /// </summary>
         public void OpenKompas()
@@ -172,23 +187,90 @@
         }
 
         /// <summary>
-        /// Создать Document2D для первого параметра прямоугольника.
+        /// Создание первого параметра эллипса.
         /// </summary>
-        public void CreateDocument2DForOneRectangleParam()
+        /// <param name="firstParameter">Ширина.</param>
+        /// <param name="secondParameter">Высота.</param>
+        public void CreateFirstEllipseParam(float firstParameter, float secondParameter)
         {
-            Document2D = DefinitionSketch.BeginEdit();
-            Document2D.ksRectangle(ThirdRectangleParam, 0);
-            DefinitionSketch.EndEdit();
+            FirstEllipseParam = (ksEllipseParam)KompasObject.GetParamStruct(22);
+            FirstEllipseParam.A = firstParameter / 2;
+            FirstEllipseParam.B = secondParameter / 2;
+            FirstEllipseParam.xc = 0;
+            FirstEllipseParam.yc =  0;
+            FirstEllipseParam.angle = 0;
+            FirstEllipseParam.style = 1;
+        }
+
+        /// <summary>
+        /// Создание второго параметра эллипса.
+        /// </summary>
+        /// <param name="firstParameter">Ширина.</param>
+        /// <param name="secondParameter">Высота.</param>
+        public void CreateSecondEllipseParam(float firstParameter, float secondParameter)
+        {
+            SecondEllipseParam = (ksEllipseParam)KompasObject.GetParamStruct(22);
+            SecondEllipseParam.A = firstParameter / 2;
+            SecondEllipseParam.B = secondParameter / 2;
+            SecondEllipseParam.xc = 0;
+            SecondEllipseParam.yc = 0;
+            SecondEllipseParam.angle = 0;
+            SecondEllipseParam.style = 1;
+        }
+
+        /// <summary>
+        /// Создание третьего параметра эллипса.
+        /// </summary>
+        /// <param name="firstParameter">Ширина.</param>
+        /// <param name="secondParameter">Высота.</param>
+        public void CreateThirdEllipseParam(float firstParameter, float secondParameter)
+        {
+            ThirdEllipseParam = (ksEllipseParam)KompasObject.GetParamStruct(22);
+            ThirdEllipseParam.A = firstParameter / 2;
+            ThirdEllipseParam.B = secondParameter / 2;
+            ThirdEllipseParam.xc = 0;
+            ThirdEllipseParam.yc = 0;
+            ThirdEllipseParam.angle = 0;
+            ThirdEllipseParam.style = 1;
         }
 
         /// <summary>
         /// Создать Document2D для второго параметра прямоугольника.
         /// </summary>
-        public void CreateDocument2DForTwoRectangleParam()
+        /// <param name="isEllipseFrame">Это эллипсная рамка.</param>
+        public void CreateDocument2DForTwoRectangleParam(bool isEllipseFrame)
         {
             Document2D = DefinitionSketch.BeginEdit();
-            Document2D.ksRectangle(FirstRectangleParam, 0);
-            Document2D.ksRectangle(SecondRectangleParam, 0);
+            if (isEllipseFrame)
+            {
+                Document2D.ksEllipse(FirstEllipseParam);
+                Document2D.ksEllipse(SecondEllipseParam);
+            }
+            else
+            {
+                Document2D.ksRectangle(FirstRectangleParam, 0);
+                Document2D.ksRectangle(SecondRectangleParam, 0);
+            }
+
+            DefinitionSketch.EndEdit();
+        }
+
+        /// <summary>
+        /// Создать Document2D для первого параметра прямоугольника.
+        /// </summary>
+        /// <param name="isEllipseFrame">Это эллипсная рамка.</param>
+        public void CreateDocument2DForOneRectangleParam(bool isEllipseFrame)
+        {
+            Document2D = DefinitionSketch.BeginEdit();
+            if (isEllipseFrame)
+            {
+                Document2D.ksEllipse(ThirdEllipseParam);
+            }
+            else
+            {
+                Document2D.ksRectangle(ThirdRectangleParam, 0);
+            }
+
             DefinitionSketch.EndEdit();
         }
 
