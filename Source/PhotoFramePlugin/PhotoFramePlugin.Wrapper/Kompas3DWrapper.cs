@@ -87,6 +87,11 @@
         private ksEllipseParam ThirdEllipseParam { get; set; }
 
         /// <summary>
+        /// Параметр скругления.
+        /// </summary>
+        private ksFilletDefinition FilletDefinition { get; set; }
+
+        /// <summary>
         /// Открытие компаса.
         /// </summary>
         public void OpenKompas()
@@ -287,6 +292,55 @@
             ExtrProp.direction = (short)Direction_Type.dtNormal;
             ExtrProp.typeNormal = (short)End_Type.etBlind;
             ExtrProp.depthNormal = firstParameter;
+            EntityExtr.Create();
+        }
+
+        /// <summary>
+        /// Скругление рамки.
+        /// </summary>
+        /// <param name="rounding">Угол скругления.</param>
+        /// <param name="x">Позиция ребра по оси x.</param>
+        /// <param name="y">Позиция ребра по оси y.</param>
+        /// <param name="z">Позиция ребра по оси z.</param>
+        /// <param name="isEllipse">Строится эллипс.</param>
+        public void CreateRounding(float rounding, float x, float y, float z, bool isEllipse)
+        {
+            EntityExtr = (ksEntity)Part.NewEntity((short)Obj3dType.o3d_fillet);
+            FilletDefinition = (ksFilletDefinition)EntityExtr.GetDefinition();
+            FilletDefinition.radius = rounding;
+            FilletDefinition.tangent = false;
+
+            ksEntityCollection enColPart2 = Part.EntityCollection((short)Obj3dType.o3d_edge);
+            ksEntityCollection enColFillet = FilletDefinition.array();
+            enColFillet.Clear();
+
+            if (isEllipse)
+            {
+                y /= 2;
+                enColPart2.SelectByPoint(0, y, z);
+                enColFillet.Add(enColPart2.GetByIndex(0));
+                EntityExtr.Create();
+            }
+            else
+            {
+                x /= 2;
+                y /= 2;
+                enColPart2.SelectByPoint(0, y, z);
+                enColFillet.Add(enColPart2.GetByIndex(0));
+
+                enColPart2 = Part.EntityCollection((short)Obj3dType.o3d_edge);
+                enColPart2.SelectByPoint(x, 0, z);
+                enColFillet.Add(enColPart2.GetByIndex(0));
+
+                enColPart2 = Part.EntityCollection((short)Obj3dType.o3d_edge);
+                enColPart2.SelectByPoint(0, -y, z);
+                enColFillet.Add(enColPart2.GetByIndex(0));
+
+                enColPart2 = Part.EntityCollection((short)Obj3dType.o3d_edge);
+                enColPart2.SelectByPoint(-x, 0, z);
+                enColFillet.Add(enColPart2.GetByIndex(0));
+            }
+
             EntityExtr.Create();
         }
     }

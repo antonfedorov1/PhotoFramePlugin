@@ -51,6 +51,15 @@
             _kompas3DWrapper.CreateDocument2DForTwoRectangleParam(ellipseFrame);
             _kompas3DWrapper.CreateExtrusionParam(
                 photoFrameParameters.Parameters[ParameterType.FrameThickness].Value);
+            if (frameRounding)
+            {
+                _kompas3DWrapper.CreateRounding(
+                    photoFrameParameters.Parameters[ParameterType.FrameRounding].Value,
+                    photoFrameParameters.Parameters[ParameterType.WidthInsideFrame].Value,
+                    photoFrameParameters.Parameters[ParameterType.HeightInsideFrame].Value,
+                    photoFrameParameters.Parameters[ParameterType.FrameThickness].Value,
+                    ellipseFrame);
+            }
 
             // Создание бэк плейта
             _kompas3DWrapper.InitializationSketchDefinition();
