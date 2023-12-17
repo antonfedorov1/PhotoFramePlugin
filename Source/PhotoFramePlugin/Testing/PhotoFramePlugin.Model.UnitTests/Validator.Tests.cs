@@ -8,6 +8,9 @@
     /// </summary>
     internal class ValidatorTests
     {
+        /// <summary>
+        /// Validate_SetCorrectValue_ReturnsTrue.
+        /// </summary>
         [Test(Description = "Checking the correctness of the value")]
         public void Validate_SetCorrectValue_ReturnsTrue()
         {
@@ -22,6 +25,9 @@
             Assert.AreEqual(expected, actual);
         }
 
+        /// <summary>
+        /// Validate_SetIncorrectValue_ReturnsFalse.
+        /// </summary>
         [Test(Description = "Checking if the value is incorrect")]
         public void Validate_SetIncorrectValue_ReturnsFalse()
         {
@@ -36,6 +42,9 @@
             Assert.AreEqual(expected, actual);
         }
 
+        /// <summary>
+        /// ValidateTwoParameter_SetCorrectValue_ReturnsTrue.
+        /// </summary>
         [Test(Description = "Checking the correctness of the value")]
         public void ValidateTwoParameter_SetCorrectValue_ReturnsTrue()
         {
@@ -63,6 +72,9 @@
             Assert.AreEqual(expected, actual);
         }
 
+        /// <summary>
+        /// ValidateTwoParameter_SetIncorrectValue_ReturnsFalse.
+        /// </summary>
         [Test(Description = "Checking if the value is incorrect")]
         public void ValidateTwoParameter_SetIncorrectValue_ReturnsFalse()
         {
